@@ -1,90 +1,181 @@
 /* HeroesComponent's private CSS styles */
-.heroes {
-  margin: 0 0 2em 0;
-  list-style-type: none;
-  padding: 0;
-  width: 15em;
-}
 
+/* Form controls */
 input {
   display: block;
   width: 100%;
-  padding: .5rem;
+  max-width: 28rem;
+  padding: 0.65rem 0.85rem;
   margin: 1rem 0;
   box-sizing: border-box;
+  font: inherit;
+  color: var(--im-text);
+  background-color: var(--im-white);
+  border: 1px solid #c5cfdb;
+  border-radius: var(--im-radius);
+  transition:
+    border-color var(--im-transition),
+    box-shadow var(--im-transition);
 }
 
-.heroes li {
-  position: relative;
-  cursor: pointer;
-}
-
-.heroes li:hover {
-  left: .1em;
-}
-
-.heroes a {
-  color: #333;
-  text-decoration: none;
-  background-color: #EEE;
-  margin: .5em;
-  padding: .3em 0;
-  height: 1.6em;
-  border-radius: 4px;
-  display: block;
-  width: 100%;
-}
-
-.heroes a:hover {
-  color: #2c3a41;
-  background-color: #e6e6e6;
-}
-
-.heroes a:active {
-  background-color: #525252;
-  color: #fafafa;
-}
-
-.heroes .badge {
-  display: inline-block;
-  font-size: small;
-  color: white;
-  padding: 0.8em 0.7em 0 0.7em;
-  background-color: #405061;
-  line-height: 1em;
-  position: relative;
-  left: -1px;
-  top: -4px;
-  height: 1.8em;
-  min-width: 16px;
-  text-align: right;
-  margin-right: .8em;
-  border-radius: 4px 0 0 4px;
+input:focus-visible {
+  outline: none;
+  border-color: var(--im-navy);
+  box-shadow: 0 0 0 3px rgb(247 148 29 / 0.35);
 }
 
 .add-button {
- padding: .5rem 1.5rem;
- font-size: 1rem;
- margin-bottom: 2rem;
+  padding: 0.65rem 1.5rem;
+  margin-bottom: 2rem;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--im-white);
+  background-color: var(--im-navy);
+  border: none;
+  border-bottom: 3px solid transparent;
+  border-radius: var(--im-radius);
+  cursor: pointer;
+  transition:
+    background-color var(--im-transition),
+    border-color var(--im-transition),
+    transform var(--im-transition);
 }
 
 .add-button:hover {
-  color: white;
-  background-color: #42545C;
+  background-color: var(--im-navy-dark);
+  border-bottom-color: var(--im-accent);
+  transform: translateY(-1px);
 }
 
+.add-button:active {
+  transform: translateY(0);
+}
+
+.add-button:focus-visible {
+  outline: 3px solid var(--im-accent);
+  outline-offset: 2px;
+}
+
+/* Heroes list */
+.heroes {
+  display: grid;
+  gap: 0.6rem;
+  width: 100%;
+  max-width: 28rem;
+  margin: 0 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.heroes li {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: transform var(--im-transition);
+}
+
+.heroes li:hover {
+  transform: translateX(4px);
+}
+
+.heroes a {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  gap: 0.85rem;
+  padding: 0 1rem 0 0;
+  min-height: 2.75rem;
+  overflow: hidden;
+  color: var(--im-text);
+  font-weight: 500;
+  text-decoration: none;
+  background-color: var(--im-surface);
+  border-radius: var(--im-radius);
+  border-bottom: 3px solid transparent;
+  box-shadow: var(--im-shadow);
+  transition:
+    background-color var(--im-transition),
+    color var(--im-transition),
+    border-color var(--im-transition),
+    box-shadow var(--im-transition);
+}
+
+.heroes a:hover {
+  color: var(--im-navy);
+  background-color: #e1e8f1;
+  border-bottom-color: var(--im-accent);
+  box-shadow: var(--im-shadow-hover);
+}
+
+.heroes a:active {
+  color: var(--im-white);
+  background-color: var(--im-navy-dark);
+}
+
+.heroes a:focus-visible {
+  outline: 3px solid var(--im-accent);
+  outline-offset: 2px;
+}
+
+.heroes .badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  min-width: 2.75rem;
+  padding: 0 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--im-white);
+  background-color: var(--im-navy);
+}
+
+/* Delete button (now laid out by flexbox, no absolute positioning) */
 button.delete {
-  position: absolute;
-  left: 210px;
-  top: 5px;
-  background-color: white;
-  color:  #525252;
-  font-size: 1.1rem;
+  flex: none;
+  align-self: center;
+  width: 2.25rem;
+  height: 2.25rem;
   margin: 0;
-  padding: 1px 10px 3px 10px;
+  padding: 0;
+  font: inherit;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--im-danger, #c62828);
+  background-color: var(--im-white);
+  border: 1px solid currentColor;
+  border-radius: var(--im-radius);
+  cursor: pointer;
+  transition:
+    background-color var(--im-transition),
+    color var(--im-transition);
 }
 
 button.delete:hover {
-  background-color: #525252;
-  color: white;
+  color: var(--im-white);
+  background-color: var(--im-danger, #c62828);
+}
+
+button.delete:focus-visible {
+  outline: 3px solid var(--im-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  input,
+  .add-button,
+  .heroes li,
+  .heroes a,
+  button.delete {
+    transition: none;
+  }
+
+  .add-button:hover,
+  .heroes li:hover {
+    transform: none;
+  }
 }

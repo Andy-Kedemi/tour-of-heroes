@@ -2,46 +2,95 @@
 
 label {
   display: block;
-  font-weight: bold;
+  margin: 1.5rem 0 0.5rem;
+  color: var(--im-navy);
   font-size: 1.2rem;
-  margin-top: 1rem;
-  margin-bottom: .5rem;
-
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
+
 input {
-  padding: .5rem;
-  width: 100%;
-  max-width: 600px;
-  box-sizing: border-box;
   display: block;
-}
-
-input:focus {
-  outline: #336699 auto 1px;
-}
-
-li {
-  list-style-type: none;
-}
-.search-result li a {
-  border-bottom: 1px solid gray;
-  border-left: 1px solid gray;
-  border-right: 1px solid gray;
-  display: inline-block;
   width: 100%;
   max-width: 600px;
-  padding: .5rem;
+  padding: 0.7rem 0.9rem;
   box-sizing: border-box;
+  font: inherit;
+  color: var(--im-text);
+  background-color: var(--im-white);
+  border: 1px solid #c5cfdb;
+  border-radius: var(--im-radius);
+  transition:
+    border-color var(--im-transition),
+    box-shadow var(--im-transition);
+}
+
+input::placeholder {
+  color: #7b8794;
+}
+
+input:focus-visible {
+  outline: none;
+  border-color: var(--im-navy);
+  box-shadow: 0 0 0 3px rgb(247 148 29 / 0.35);
+}
+
+/* Results list */
+ul.search-result {
+  max-width: 600px;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  overflow: hidden;
+  list-style: none;
+  background-color: var(--im-white);
+  border: 1px solid #d5dde8;
+  border-radius: var(--im-radius);
+  box-shadow: var(--im-shadow);
+}
+
+.search-result li {
+  list-style: none;
+}
+
+.search-result li + li {
+  border-top: 1px solid #e3e9f1;
+}
+
+.search-result li a {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  box-sizing: border-box;
+  color: var(--im-text);
+  font-weight: 500;
   text-decoration: none;
-  color: black;
+  border-left: 4px solid transparent;
+  transition:
+    background-color var(--im-transition),
+    color var(--im-transition),
+    border-color var(--im-transition),
+    padding-left var(--im-transition);
 }
 
 .search-result li a:hover {
-  background-color: #435A60;
-  color: white;
+  color: var(--im-white);
+  background-color: var(--im-navy);
+  border-left-color: var(--im-accent);
+  padding-left: 1.25rem;
 }
 
-ul.search-result {
-  margin-top: 0;
-  padding-left: 0;
+.search-result li a:active {
+  background-color: var(--im-navy-dark);
+}
+
+.search-result li a:focus-visible {
+  outline: 3px solid var(--im-accent);
+  outline-offset: -3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  input,
+  .search-result li a {
+    transition: none;
+  }
 }

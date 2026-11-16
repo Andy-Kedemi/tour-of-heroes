@@ -1,3 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+
+:root {
+  --im-navy: #0b3a6f;
+  --im-navy-dark: #072648;
+  --im-accent: #f7941d;
+  --im-surface: #eef2f7;
+  --im-text: #1f2a37;
+  --im-white: #fff;
+
+  --im-radius: 8px;
+  --im-shadow: 0 1px 3px rgb(11 58 111 / 0.12);
+  --im-shadow-hover: 0 8px 20px rgb(11 58 111 / 0.22);
+  --im-transition: 0.2s ease;
+}
+
+body {
+  margin: 0;
+  color: var(--im-text);
+  background: var(--im-white);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}

@@ -1,54 +1,73 @@
 /* DashboardComponent's private CSS styles */
 
+:host {
+  display: block;
+  padding: 0 1rem 2rem;
+}
+
 h2 {
+  margin-block: 1.5rem 1.25rem;
+  color: var(--im-navy);
+  font-size: clamp(1.4rem, 2vw + 1rem, 1.9rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
   text-align: center;
 }
 
 .heroes-menu {
-  padding: 0;
-  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
   max-width: 1000px;
-
-  /* flexbox */
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-content: flex-start;
-  align-items: flex-start;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
 }
 
-a {
-  background-color: #3f525c;
-  border-radius: 2px;
-  padding: 1rem;
-  font-size: 1.2rem;
-  text-decoration: none;
-  display: inline-block;
-  color: #fff;
+.heroes-menu a {
+  display: grid;
+  place-items: center;
+  min-height: 5rem;
+  padding: 1.25rem 1rem;
+  color: var(--im-white);
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.3;
   text-align: center;
-  width: 100%;
-  min-width: 70px;
-  margin: .5rem auto;
-  box-sizing: border-box;
-
-  /* flexbox */
-  order: 0;
-  flex: 0 1 auto;
-  align-self: auto;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  background: linear-gradient(145deg, var(--im-navy), var(--im-navy-dark));
+  border-bottom: 4px solid transparent;
+  border-radius: var(--im-radius);
+  box-shadow: var(--im-shadow);
+  transition:
+    border-color var(--im-transition),
+    box-shadow var(--im-transition),
+    transform var(--im-transition);
 }
 
-@media (min-width: 600px) {
-  a {
-    width: 18%;
-    box-sizing: content-box;
+.heroes-menu a:hover {
+  border-bottom-color: var(--im-accent);
+  box-shadow: var(--im-shadow-hover);
+  transform: translateY(-3px);
+}
+
+.heroes-menu a:active {
+  box-shadow: var(--im-shadow);
+  transform: translateY(0);
+}
+
+.heroes-menu a:focus-visible {
+  outline: 3px solid var(--im-accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroes-menu a {
+    transition: none;
   }
-}
 
-a:hover {
-  background-color: black;
+  .heroes-menu a:hover {
+    transform: none;
+  }
 }

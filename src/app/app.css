@@ -1,21 +1,77 @@
 /* AppComponent's private CSS styles */
-h1 {
-  margin-bottom: 0;
+:host {
+  display: block;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  color: var(--im-text);
 }
+
+.app-header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+h1 {
+  margin: 0 0 1rem;
+  color: var(--im-navy);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
 nav a {
-  padding: 1rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.65rem 1.1rem;
+  background-color: var(--im-surface);
+  color: var(--im-navy);
+  font-weight: 600;
   text-decoration: none;
-  margin-top: 10px;
-  display: inline-block;
-  background-color: #e8e8e8;
-  color: #3d3d3d;
-  border-radius: 4px;
+  border-radius: var(--im-radius);
+  border-bottom: 3px solid transparent;
+  transition:
+    background-color var(--im-transition),
+    color var(--im-transition),
+    border-color var(--im-transition),
+    transform 0.15s ease;
 }
 
 nav a:hover {
-  color: white;
-  background-color: #42545C;
+  background-color: var(--im-navy);
+  color: var(--im-white);
+  border-bottom-color: var(--im-accent);
+  transform: translateY(-1px);
 }
+
 nav a:active {
-  background-color: black;
+  background-color: var(--im-navy-dark);
+  transform: translateY(0);
+}
+
+/* Highlights the current page if you use routerLinkActive="active" */
+nav a.active {
+  background-color: var(--im-navy);
+  color: var(--im-white);
+  border-bottom-color: var(--im-accent);
+}
+
+nav a:focus-visible {
+  outline: 3px solid var(--im-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  nav a {
+    transition: none;
+  }
+  nav a:hover {
+    transform: none;
+  }
 }
